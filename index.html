@@ -221,7 +221,8 @@ function registerFarmer() {
 
     if (name === "" || mobile === "" || village === "" || crop === "") {
         alert("Please fill all the details.");
-        return;
+        return;document.getElementById("farmerRegistration").classList.add("hidden");
+document.getElementById("dashboard").classList.remove("hidden");
     }
 
     if (!/^[0-9]{10}$/.test(mobile)) {
