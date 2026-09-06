@@ -533,12 +533,18 @@ function saveExpectedPrice() {
     document.getElementById("priceMessage").innerHTML =
         '<div class="success">' +
         '✅ Expected price saved: ₹' + price + '/kg' +
-        '</div>';
-}
-
-
+     localStorage.getI
 function showBuyers() {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("farmerRegistration").classList.add("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("addCrop").classList.add("hidden");
+    document.getElementById("myCrops").classList.add("hidden");
+    document.getElementById("expectedPrice").classList.add("hidden");
+    document.getElementById("marketPrices").classList.add("hidden");
 
+    document.getElementById("buyers").classList.remove("hidden");
+}
     hideAllSections();
 
     document.getElementById("buyers")
