@@ -169,7 +169,39 @@ label {
 </div>
 
 <script>
+<!-- FARMER DASHBOARD -->
+<div id="dashboard" class="hidden">
 
+    <div class="card">
+        <h2>🌾 Farmer Dashboard</h2>
+        <p>Welcome, Farmer!</p>
+
+        <button onclick="alert('Add Crop feature coming next!')">
+            🌾 Add Crop
+        </button>
+
+        <button onclick="alert('My Crops feature coming next!')">
+            📦 My Crops
+        </button>
+
+        <button onclick="alert('Expected Price feature coming next!')">
+            💰 Expected Price
+        </button>
+
+        <button onclick="alert('Find Buyers feature coming next!')">
+            🛒 Find Buyers
+        </button>
+
+        <button onclick="alert('Market Prices feature coming next!')">
+            📊 Market Prices
+        </button>
+
+        <button onclick="goHome()" style="background:#777;">
+            ⬅️ Back to Home
+        </button>
+    </div>
+
+</div>
 function showFarmerRegistration() {
     document.getElementById("home").classList.add("hidden");
     document.getElementById("farmerRegistration").classList.remove("hidden");
