@@ -1,114 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriLink AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriLink AI</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f1f8e9;
-      color: #1b5e20;
-    }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f1f8e9;
+    color: #1b5e20;
+}
 
-    header {
-      background: #2e7d32;
-      color: white;
-      padding: 25px;
-      text-align: center;
-    }
+header {
+    background: #2e7d32;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
 
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      margin: 20px 0;
-      border-radius: 15px;
-      box-shadow: 0 3px 10px #ccc;
-    }
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px #cccccc;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      box-sizing: border-box;
-      border: 1px solid #aaa;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+h2 {
+    color: #1b5e20;
+}
 
-    button {
-      width: 100%;
-      padding: 15px;
-      background: #43a047;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      margin-top: 10px;
-    }
+button {
+    width: 100%;
+    padding: 15px;
+    background: #43a047;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    margin-top: 10px;
+}
 
-    button:hover {
-      background: #2e7d32;
-    }
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0 15px 0;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    font-size: 16px;
+}
 
-    #message {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
+label {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.success {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🌾 AgriLink AI</h1>
-  <p>Farmer Market Linkage & Price Discovery</p>
+    <h1>🌾 AgriLink AI</h1>
+    <p>Farmer Market Linkage & Price Discovery</p>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h2>👨‍🌾 Farmer Registration</h2>
+    <!-- HOME -->
+    <div id="home">
 
-    <label>Farmer Name</label>
-    <input type="text" id="farmerName" placeholder="Enter your name">
+        <div class="card">
+            <h2>👨‍🌾 Farmer</h2>
+            <p>Sell your crops directly to buyers.</p>
+            <button onclick="showFarmerRegistration()">
+                Farmer Portal
+            </button>
+        </div>
 
-    <label>Mobile Number</label>
-    <input type="tel" id="mobile" placeholder="Enter 10-digit mobile number">
+        <div class="card">
+            <h2>🛒 Buyer</h2>
+            <p>Find crops and connect with farmers.</p>
+            <button onclick="alert('Buyer section coming soon!')">
+                Buyer Portal
+            </button>
+        </div>
 
-    <button onclick="registerFarmer()">Register</button>
+        <div class="card">
+            <h2>📊 Market Prices</h2>
+            <p>Check current crop prices and discover better markets.</p>
+            <button onclick="alert('Market prices coming soon!')">
+                View Prices
+            </button>
+        </div>
 
-    <p id="message"></p>
-  </div>
+    </div>
+
+    <!-- FARMER REGISTRATION -->
+    <div id="farmerRegistration" class="hidden">
+
+        <div class="card">
+
+            <h2>👨‍🌾 Farmer Registration</h2>
+
+            <label>Farmer Name</label>
+            <input
+                type="text"
+                id="farmerName"
+                placeholder="Enter your full name"
+            >
+
+            <label>Mobile Number</label>
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+            >
+
+            <label>Village</label>
+            <input
+                type="text"
+                id="village"
+                placeholder="Enter village name"
+            >
+
+            <label>Crop</label>
+            <input
+                type="text"
+                id="crop"
+                placeholder="Example: Rice, Tomato, Onion"
+            >
+
+            <button onclick="registerFarmer()">
+                Register Farmer
+            </button>
+
+            <button
+                onclick="goHome()"
+                style="background:#777;">
+                Back
+            </button>
+
+            <div id="successMessage"></div>
+
+        </div>
+
+    </div>
 
 </div>
 
 <script>
-  function registerFarmer() {
-    let name = document.getElementById("farmerName").value;
-    let mobile = document.getElementById("mobile").value;
-    let message = document.getElementById("message");
 
-    if (name === "" || mobile === "") {
-      message.innerHTML = "❌ Please enter your name and mobile number.";
-      return;
+function showFarmerRegistration() {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("farmerRegistration").classList.remove("hidden");
+}
+
+function goHome() {
+    document.getElementById("farmerRegistration").classList.add("hidden");
+    document.getElementById("home").classList.remove("hidden");
+}
+
+function registerFarmer() {
+
+    let name = document.getElementById("farmerName").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let village = document.getElementById("village").value.trim();
+    let crop = document.getElementById("crop").value.trim();
+
+    if (name === "" || mobile === "" || village === "" || crop === "") {
+        alert("Please fill all the details.");
+        return;
     }
 
-    if (mobile.length !== 10) {
-      message.innerHTML = "❌ Please enter a valid 10-digit mobile number.";
-      return;
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
     }
 
-    message.innerHTML = "✅ Registration successful! Welcome " + name + "!";
-  }
+    localStorage.setItem("farmerName", name);
+    localStorage.setItem("farmerMobile", mobile);
+    localStorage.setItem("farmerVillage", village);
+    localStorage.setItem("farmerCrop", crop);
+
+    document.getElementById("successMessage").innerHTML =
+        '<div class="success">' +
+        '<h3>✅ Registration Successful!</h3>' +
+        '<p>Welcome, ' + name + '!</p>' +
+        '<p>Your farmer profile has been created.</p>' +
+        '</div>';
+
+}
+
 </script>
 
 </body>
