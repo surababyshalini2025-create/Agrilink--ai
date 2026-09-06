@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AgriLink AI</title>
 
 <style>
@@ -91,6 +92,7 @@ label {
         <div class="card">
             <h2>👨‍🌾 Farmer</h2>
             <p>Sell your crops directly to buyers.</p>
+
             <button onclick="showFarmerRegistration()">
                 Farmer Portal
             </button>
@@ -99,19 +101,23 @@ label {
         <div class="card">
             <h2>🛒 Buyer</h2>
             <p>Find crops and connect with farmers.</p>
+
             <button onclick="alert('Buyer section coming soon!')">
                 Buyer Portal
             </button>
         </div>
+
         <div class="card">
             <h2>📊 Market Prices</h2>
             <p>Check current crop prices and discover better markets.</p>
+
             <button onclick="alert('Market prices coming soon!')">
                 View Prices
             </button>
         </div>
 
     </div>
+
 
     <!-- FARMER REGISTRATION -->
     <div id="farmerRegistration" class="hidden">
@@ -121,6 +127,7 @@ label {
             <h2>👨‍🌾 Farmer Registration</h2>
 
             <label>Farmer Name</label>
+
             <input
                 type="text"
                 id="farmerName"
@@ -128,6 +135,7 @@ label {
             >
 
             <label>Mobile Number</label>
+
             <input
                 type="tel"
                 id="mobile"
@@ -136,6 +144,7 @@ label {
             >
 
             <label>Village</label>
+
             <input
                 type="text"
                 id="village"
@@ -143,6 +152,7 @@ label {
             >
 
             <label>Crop</label>
+
             <input
                 type="text"
                 id="crop"
@@ -165,84 +175,132 @@ label {
 
     </div>
 
-</div>
 
-<script>
-<!-- FARMER DASHBOARD -->
-<div id="dashboard" class="hidden">
+    <!-- FARMER DASHBOARD -->
+    <div id="dashboard" class="hidden">
 
-    <div class="card">
-        <h2>🌾 Farmer Dashboard</h2>
-        <p>Welcome, Farmer!</p>
+        <div class="card">
 
-        <button onclick="alert('Add Crop feature coming next!')">
-            🌾 Add Crop
-        </button>
+            <h2>🌾 Farmer Dashboard</h2>
 
-        <button onclick="alert('My Crops feature coming next!')">
-            📦 My Crops
-        </button>
+            <p id="welcomeMessage">
+                Welcome, Farmer!
+            </p>
 
-        <button onclick="alert('Expected Price feature coming next!')">
-            💰 Expected Price
-        </button>
+            <button onclick="alert('Add Crop feature coming next!')">
+                🌾 Add Crop
+            </button>
 
-        <button onclick="alert('Find Buyers feature coming next!')">
-            🛒 Find Buyers
-        </button>
+            <button onclick="alert('My Crops feature coming next!')">
+                📦 My Crops
+            </button>
 
-        <button onclick="alert('Market Prices feature coming next!')">
-            📊 Market Prices
-        </button>
+            <button onclick="alert('Expected Price feature coming next!')">
+                💰 Expected Price
+            </button>
 
-        <button onclick="goHome()" style="background:#777;">
-            ⬅️ Back to Home
-        </button>
+            <button onclick="alert('Find Buyers feature coming next!')">
+                🛒 Find Buyers
+            </button>
+
+            <button onclick="alert('Market Prices feature coming next!')">
+                📊 Market Prices
+            </button>
+
+            <button
+                onclick="goHome()"
+                style="background:#777;">
+                ⬅️ Back to Home
+            </button>
+
+        </div>
+
     </div>
 
 </div>
+
+
+<script>
+
 function showFarmerRegistration() {
+
     document.getElementById("home").classList.add("hidden");
+
+    document.getElementById("dashboard").classList.add("hidden");
+
     document.getElementById("farmerRegistration").classList.remove("hidden");
 }
 
+
 function goHome() {
+
     document.getElementById("farmerRegistration").classList.add("hidden");
+
+    document.getElementById("dashboard").classList.add("hidden");
+
     document.getElementById("home").classList.remove("hidden");
 }
+
 
 function registerFarmer() {
 
     let name = document.getElementById("farmerName").value.trim();
+
     let mobile = document.getElementById("mobile").value.trim();
+
     let village = document.getElementById("village").value.trim();
+
     let crop = document.getElementById("crop").value.trim();
 
-    if (name === "" || mobile === "" || village === "" || crop === "") {
-        alert("Please fill all the details.");
-        return;document.getElementById("farmerRegistration").classList.add("hidden");
-document.getElementById("dashboard").classList.remove("hidden");
-    }
 
-    if (!/^[0-9]{10}$/.test(mobile)) {
-        alert("Please enter a valid 10-digit mobile number.");
+    if (
+        name === "" ||
+        mobile === "" ||
+        village === "" ||
+        crop === ""
+    ) {
+
+        alert("Please fill all the details.");
+
         return;
     }
 
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+
+        alert("Please enter a valid 10-digit mobile number.");
+
+        return;
+    }
+
+
     localStorage.setItem("farmerName", name);
+
     localStorage.setItem("farmerMobile", mobile);
+
     localStorage.setItem("farmerVillage", village);
+
     localStorage.setItem("farmerCrop", crop);
 
+
     document.getElementById("successMessage").innerHTML =
-      setTimeout(function() {
-    document.getElementById("farmerRegistration").classList.add("hidden");
-    document.getElementById("dashboard").classList.remove("hidden");
-}, 1500);  '<div class="success">' +
+        '<div class="success">' +
         '<h3>✅ Registration Successful!</h3>' +
         '<p>Welcome, ' + name + '!</p>' +
         '<p>Your farmer profile has been created.</p>' +
         '</div>';
+
+
+    setTimeout(function() {
+
+        document.getElementById("farmerRegistration").classList.add("hidden");
+
+        document.getElementById("dashboard").classList.remove("hidden");
+
+        document.getElementById("welcomeMessage").innerText =
+            "Welcome, " + name + "!";
+
+    }, 1500);
 
 }
 
