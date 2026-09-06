@@ -235,7 +235,10 @@ function registerFarmer() {
     localStorage.setItem("farmerCrop", crop);
 
     document.getElementById("successMessage").innerHTML =
-        '<div class="success">' +
+      setTimeout(function() {
+    document.getElementById("farmerRegistration").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+}, 1500);  '<div class="success">' +
         '<h3>✅ Registration Successful!</h3>' +
         '<p>Welcome, ' + name + '!</p>' +
         '<p>Your farmer profile has been created.</p>' +
