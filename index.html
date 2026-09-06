@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AgriLink AI</title>
 
 <style>
@@ -74,6 +73,13 @@ label {
     border-radius: 10px;
     margin-top: 15px;
 }
+
+.item {
+    background: #f1f8e9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 </style>
 </head>
 
@@ -86,185 +92,322 @@ label {
 
 <div class="container">
 
-    <!-- HOME -->
-    <div id="home">
+<!-- HOME -->
+<div id="home">
 
-        <div class="card">
-            <h2>👨‍🌾 Farmer</h2>
-            <p>Sell your crops directly to buyers.</p>
-
-            <button onclick="showFarmerRegistration()">
-                Farmer Portal
-            </button>
-        </div>
-
-        <div class="card">
-            <h2>🛒 Buyer</h2>
-            <p>Find crops and connect with farmers.</p>
-
-            <button onclick="alert('Buyer section coming soon!')">
-                Buyer Portal
-            </button>
-        </div>
-
-        <div class="card">
-            <h2>📊 Market Prices</h2>
-            <p>Check current crop prices and discover better markets.</p>
-
-            <button onclick="alert('Market prices coming soon!')">
-                View Prices
-            </button>
-        </div>
-
+    <div class="card">
+        <h2>👨‍🌾 Farmer</h2>
+        <p>Sell your crops directly to buyers.</p>
+        <button onclick="showFarmerRegistration()">
+            Farmer Portal
+        </button>
     </div>
 
-
-    <!-- FARMER REGISTRATION -->
-    <div id="farmerRegistration" class="hidden">
-
-        <div class="card">
-
-            <h2>👨‍🌾 Farmer Registration</h2>
-
-            <label>Farmer Name</label>
-
-            <input
-                type="text"
-                id="farmerName"
-                placeholder="Enter your full name"
-            >
-
-            <label>Mobile Number</label>
-
-            <input
-                type="tel"
-                id="mobile"
-                placeholder="Enter 10-digit mobile number"
-                maxlength="10"
-            >
-
-            <label>Village</label>
-
-            <input
-                type="text"
-                id="village"
-                placeholder="Enter village name"
-            >
-
-            <label>Crop</label>
-
-            <input
-                type="text"
-                id="crop"
-                placeholder="Example: Rice, Tomato, Onion"
-            >
-
-            <button onclick="registerFarmer()">
-                Register Farmer
-            </button>
-
-            <button
-                onclick="goHome()"
-                style="background:#777;">
-                Back
-            </button>
-
-            <div id="successMessage"></div>
-
-        </div>
-
+    <div class="card">
+        <h2>🛒 Buyer</h2>
+        <p>Find crops and connect with farmers.</p>
+        <button onclick="alert('Buyer section coming soon!')">
+            Buyer Portal
+        </button>
     </div>
 
+    <div class="card">
+        <h2>📊 Market Prices</h2>
+        <p>Check current crop prices and discover better markets.</p>
+        <button onclick="showMarketPrices()">
+            View Prices
+        </button>
+    </div>
 
-    <!-- FARMER DASHBOARD -->
-    <div id="dashboard" class="hidden">
+</div>
 
-        <div class="card">
 
-            <h2>🌾 Farmer Dashboard</h2>
+<!-- FARMER REGISTRATION -->
+<div id="farmerRegistration" class="hidden">
 
-            <p id="welcomeMessage">
-                Welcome, Farmer!
-            </p>
+    <div class="card">
 
-            <button onclick="alert('Add Crop feature coming next!')">
-                🌾 Add Crop
-            </button>
+        <h2>👨‍🌾 Farmer Registration</h2>
 
-            <button onclick="alert('My Crops feature coming next!')">
-                📦 My Crops
-            </button>
+        <label>Farmer Name</label>
+        <input type="text" id="farmerName"
+               placeholder="Enter your full name">
 
-            <button onclick="alert('Expected Price feature coming next!')">
-                💰 Expected Price
-            </button>
+        <label>Mobile Number</label>
+        <input type="tel" id="mobile"
+               placeholder="Enter 10-digit mobile number"
+               maxlength="10">
 
-            <button onclick="alert('Find Buyers feature coming next!')">
-                🛒 Find Buyers
-            </button>
+        <label>Village</label>
+        <input type="text" id="village"
+               placeholder="Enter village name">
 
-            <button onclick="alert('Market Prices feature coming next!')">
-                📊 Market Prices
-            </button>
+        <label>Crop</label>
+        <input type="text" id="crop"
+               placeholder="Example: Rice, Tomato, Onion">
 
-            <button
-                onclick="goHome()"
-                style="background:#777;">
-                ⬅️ Back to Home
-            </button>
+        <button onclick="registerFarmer()">
+            Register Farmer
+        </button>
 
-        </div>
+        <button onclick="goHome()" style="background:#777;">
+            Back
+        </button>
+
+        <div id="successMessage"></div>
 
     </div>
 
 </div>
 
 
+<!-- FARMER DASHBOARD -->
+<div id="dashboard" class="hidden">
+
+    <div class="card">
+
+        <h2>🌾 Farmer Dashboard</h2>
+
+        <p id="welcomeMessage">Welcome, Farmer!</p>
+
+        <button onclick="showAddCrop()">
+            🌾 Add Crop
+        </button>
+
+        <button onclick="showMyCrops()">
+            📦 My Crops
+        </button>
+
+        <button onclick="showExpectedPrice()">
+            💰 Expected Price
+        </button>
+
+        <button onclick="showBuyers()">
+            🛒 Find Buyers
+        </button>
+
+        <button onclick="showMarketPrices()">
+            📊 Market Prices
+        </button>
+
+        <button onclick="goHome()" style="background:#777;">
+            ⬅️ Back to Home
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ADD CROP -->
+<div id="addCrop" class="hidden">
+
+    <div class="card">
+
+        <h2>🌾 Add Crop</h2>
+
+        <label>Crop Name</label>
+        <input type="text" id="newCrop"
+               placeholder="Example: Rice">
+
+        <label>Quantity (kg)</label>
+        <input type="number" id="quantity"
+               placeholder="Enter quantity">
+
+        <button onclick="saveCrop()">
+            Save Crop
+        </button>
+
+        <button onclick="showDashboard()" style="background:#777;">
+            ⬅️ Back to Dashboard
+        </button>
+
+        <div id="cropMessage"></div>
+
+    </div>
+
+</div>
+
+
+<!-- MY CROPS -->
+<div id="myCrops" class="hidden">
+
+    <div class="card">
+
+        <h2>📦 My Crops</h2>
+
+        <div id="cropList">
+            <p>No crops added yet.</p>
+        </div>
+
+        <button onclick="showDashboard()" style="background:#777;">
+            ⬅️ Back to Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- EXPECTED PRICE -->
+<div id="expectedPrice" class="hidden">
+
+    <div class="card">
+
+        <h2>💰 Expected Price</h2>
+
+        <label>Crop</label>
+        <input type="text" id="priceCrop"
+               placeholder="Example: Rice">
+
+        <label>Expected Price per kg (₹)</label>
+        <input type="number" id="price"
+               placeholder="Enter expected price">
+
+        <button onclick="saveExpectedPrice()">
+            Save Expected Price
+        </button>
+
+        <div id="priceMessage"></div>
+
+        <button onclick="showDashboard()" style="background:#777;">
+            ⬅️ Back to Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FIND BUYERS -->
+<div id="buyers" class="hidden">
+
+    <div class="card">
+
+        <h2>🛒 Find Buyers</h2>
+
+        <div class="item">
+            <h3>🏪 Local Vegetable Buyer</h3>
+            <p>Interested in vegetables and fresh crops.</p>
+            <button onclick="alert('Buyer contact feature coming next!')">
+                Contact Buyer
+            </button>
+        </div>
+
+        <div class="item">
+            <h3>🏬 Wholesale Market Buyer</h3>
+            <p>Buys crops in large quantities.</p>
+            <button onclick="alert('Buyer contact feature coming next!')">
+                Contact Buyer
+            </button>
+        </div>
+
+        <button onclick="showDashboard()" style="background:#777;">
+            ⬅️ Back to Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MARKET PRICES -->
+<div id="marketPrices" class="hidden">
+
+    <div class="card">
+
+        <h2>📊 Market Prices</h2>
+
+        <div class="item">
+            🌾 Rice — ₹40/kg
+        </div>
+
+        <div class="item">
+            🌽 Maize — ₹25/kg
+        </div>
+
+        <div class="item">
+            🍅 Tomato — ₹30/kg
+        </div>
+
+        <div class="item">
+            🧅 Onion — ₹35/kg
+        </div>
+
+        <div class="item">
+            🥔 Potato — ₹25/kg
+        </div>
+
+        <p>
+            ℹ️ These are demo prices for the prototype.
+        </p>
+
+        <button onclick="showDashboard()" style="background:#777;">
+            ⬅️ Back to Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
 <script>
+
+function hideAllSections() {
+
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("farmerRegistration").classList.add("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("addCrop").classList.add("hidden");
+    document.getElementById("myCrops").classList.add("hidden");
+    document.getElementById("expectedPrice").classList.add("hidden");
+    document.getElementById("buyers").classList.add("hidden");
+    document.getElementById("marketPrices").classList.add("hidden");
+}
+
 
 function showFarmerRegistration() {
 
-    document.getElementById("home").classList.add("hidden");
+    hideAllSections();
 
-    document.getElementById("dashboard").classList.add("hidden");
-
-    document.getElementById("farmerRegistration").classList.remove("hidden");
+    document.getElementById("farmerRegistration")
+        .classList.remove("hidden");
 }
 
 
 function goHome() {
 
-    document.getElementById("farmerRegistration").classList.add("hidden");
+    hideAllSections();
 
-    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("home")
+        .classList.remove("hidden");
+}
 
-    document.getElementById("home").classList.remove("hidden");
+
+function showDashboard() {
+
+    hideAllSections();
+
+    document.getElementById("dashboard")
+        .classList.remove("hidden");
 }
 
 
 function registerFarmer() {
 
     let name = document.getElementById("farmerName").value.trim();
-
     let mobile = document.getElementById("mobile").value.trim();
-
     let village = document.getElementById("village").value.trim();
-
     let crop = document.getElementById("crop").value.trim();
 
-
-    if (
-        name === "" ||
-        mobile === "" ||
-        village === "" ||
-        crop === ""
-    ) {
+    if (name === "" || mobile === "" || village === "" || crop === "") {
 
         alert("Please fill all the details.");
 
         return;
     }
-
 
     if (!/^[0-9]{10}$/.test(mobile)) {
 
@@ -273,15 +416,10 @@ function registerFarmer() {
         return;
     }
 
-
     localStorage.setItem("farmerName", name);
-
     localStorage.setItem("farmerMobile", mobile);
-
     localStorage.setItem("farmerVillage", village);
-
     localStorage.setItem("farmerCrop", crop);
-
 
     document.getElementById("successMessage").innerHTML =
         '<div class="success">' +
@@ -290,18 +428,130 @@ function registerFarmer() {
         '<p>Your farmer profile has been created.</p>' +
         '</div>';
 
-
     setTimeout(function() {
 
-        document.getElementById("farmerRegistration").classList.add("hidden");
-
-        document.getElementById("dashboard").classList.remove("hidden");
+        showDashboard();
 
         document.getElementById("welcomeMessage").innerText =
             "Welcome, " + name + "!";
 
     }, 1500);
+}
 
+
+function showAddCrop() {
+
+    hideAllSections();
+
+    document.getElementById("addCrop")
+        .classList.remove("hidden");
+}
+
+
+function saveCrop() {
+
+    let crop = document.getElementById("newCrop").value.trim();
+    let quantity = document.getElementById("quantity").value.trim();
+
+    if (crop === "" || quantity === "") {
+
+        alert("Please enter crop and quantity.");
+
+        return;
+    }
+
+    localStorage.setItem("newCrop", crop);
+    localStorage.setItem("quantity", quantity);
+
+    document.getElementById("cropMessage").innerHTML =
+        '<div class="success">✅ Crop saved successfully!</div>';
+
+}
+
+
+function showMyCrops() {
+
+    hideAllSections();
+
+    document.getElementById("myCrops")
+        .classList.remove("hidden");
+
+    let crop = localStorage.getItem("newCrop");
+    let quantity = localStorage.getItem("quantity");
+
+    let registeredCrop = localStorage.getItem("farmerCrop");
+
+    let list = document.getElementById("cropList");
+
+    if (crop && quantity) {
+
+        list.innerHTML =
+            '<div class="item">' +
+            '<h3>🌾 ' + crop + '</h3>' +
+            '<p>Quantity: ' + quantity + ' kg</p>' +
+            '</div>';
+
+    } else if (registeredCrop) {
+
+        list.innerHTML =
+            '<div class="item">' +
+            '<h3>🌾 ' + registeredCrop + '</h3>' +
+            '<p>Registered crop</p>' +
+            '</div>';
+
+    } else {
+
+        list.innerHTML = "<p>No crops added yet.</p>";
+    }
+}
+
+
+function showExpectedPrice() {
+
+    hideAllSections();
+
+    document.getElementById("expectedPrice")
+        .classList.remove("hidden");
+}
+
+
+function saveExpectedPrice() {
+
+    let crop = document.getElementById("priceCrop").value.trim();
+    let price = document.getElementById("price").value.trim();
+
+    if (crop === "" || price === "") {
+
+        alert("Please enter crop and expected price.");
+
+        return;
+    }
+
+    localStorage.setItem("expectedPriceCrop", crop);
+    localStorage.setItem("expectedPrice", price);
+
+    document.getElementById("priceMessage").innerHTML =
+        '<div class="success">' +
+        '✅ Expected price saved: ₹' + price + '/kg' +
+        '</div>';
+}
+
+
+function showBuyers() {
+
+    hideAllSections();
+
+    document.getElementById("buyers")
+        .classList.remove("hidden");
+}
+
+
+function showMarketPrices() {
+
+    hideAllSections();
+
+    document.getElementById("marketPrices")
+        .classList.remove("hidden");
 }
 
 </script>
