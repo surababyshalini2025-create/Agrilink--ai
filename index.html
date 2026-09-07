@@ -289,7 +289,7 @@ label {
         <div class="item">
             <h3>🏪 Local Vegetable Buyer</h3>
             <p>Interested in vegetables and fresh crops.</p>
-            onclick="contactBuyer()"
+         <button onclick="contactBuyer()">
                 Contact Buyer
             </button>
         </div>
@@ -559,7 +559,9 @@ function showMarketPrices() {
     document.getElementById("marketPrices")
         .classList.remove("hidden");
 }
-
+function contactBuyer() {
+    alert("📞 Buyer contact: +91 98765 43210");
+}
 </script>
 
 </body>
